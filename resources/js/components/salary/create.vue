@@ -72,8 +72,6 @@
 <script type="text/javascript">
   
   export default {
- 
-
     data(){
     return {
       form:{
@@ -87,6 +85,9 @@
     }
   },
   created(){
+    if(!User.loggedIn()){
+        this.$router.push({name:'/'})
+    }
   	let id = this.$route.params.id
   	axios.get('/api/employee/'+id)
   	.then(({data}) => (this.form = data))

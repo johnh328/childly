@@ -56,12 +56,19 @@
                       </div>
                       <small class="text-danger" v-if="errors.phone">{{errors.phone[0]}}</small>
 					  </div>
-            <div class="col-md-6 mt-3">
-					    <label>Joining Date</label>
+            <div class="col-md-6">
+					    <label class="mt-3">Joining Date</label>
                       <div class="input-group input-group-outline">
                          <input type="date" class="form-control" v-model="form.joining_date">
                       </div>
                       <small class="text-danger" v-if="errors.joining_date">{{errors.joining_date[0]}}</small>
+					  </div>
+            <div class="col-md-6">
+					    <label for="formFileMultiple" class="form-label  mt-3">Choose Employee photo</label>
+                <div class="input-group input-group-outline">
+                  <input class="form-control" required type="file" id="formFile" @change="onFileSelected">
+                </div>
+              <small class="text-danger" v-if="errors.photo">{{errors.photo[0]}}</small>
 					  </div>
 					</div>
           <div class="form-group mt-5">
@@ -81,6 +88,11 @@
 <script type="text/javascript">
   
   export default {
+    created(){
+      if(!User.loggedIn()){
+        this.$router.push({name:'/'})
+      }
+    },
     data(){
     return {
       form:{

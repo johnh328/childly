@@ -73,7 +73,6 @@
 <script type="text/javascript">
   
   export default {
- 
     data(){
       return{
         employees:[],
@@ -97,6 +96,9 @@
     
   },
   created(){
+    if(!User.loggedIn()){
+        this.$router.push({name:'/'})
+    }
     this.allEmployee();
   } 
   

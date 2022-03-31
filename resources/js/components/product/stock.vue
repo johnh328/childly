@@ -76,7 +76,6 @@
 <script type="text/javascript">
   
   export default {
- 
     data(){
       return{
         products:[],
@@ -100,6 +99,9 @@
 
   },
   created(){
+    if(!User.loggedIn()){
+        this.$router.push({name:'/'})
+    }
     this.allProduct();
   } 
   

@@ -83,7 +83,6 @@ let editStock = require("./components/product/edit-stock.vue").default;
 let order = require("./components/order/order.vue").default;
 let refund = require("./components/order/refund_order.vue").default;
 let viewOrder = require("./components/order/view_order.vue").default;
-let searchOrder = require("./components/order/search.vue").default;
 
 // Supplier Component
 let storeSupplier = require("./components/supplier/create.vue").default;
@@ -244,7 +243,6 @@ export const routes = [
     { path: "/order", component: order, name: "order" },
     { path: "/refund", component: refund, name: "refund" },
     { path: "/view-order/:id", component: viewOrder, name: "view-order" },
-    { path: "/searchOrder", component: searchOrder, name: "searchOrder" },
 
     // Supplier Routes
     {

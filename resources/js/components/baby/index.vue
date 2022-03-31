@@ -25,7 +25,6 @@
                       <th class="text-uppercase text-secondary text-sm font-weight-bolder ps-2">DOB / Expectation date</th>
                       <th class="text-uppercase text-secondary text-sm font-weight-bolder ps-2">Gender</th>
                       <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder">Parent Name</th>
-                      <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder">Registered On</th>
                       <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder">Actions</th>
                       <th class="text-secondary"></th>
                     </tr>
@@ -52,10 +51,6 @@
                         <p class="text-sm font-weight-bold mb-0">{{baby.parent_name}}</p>
                       </td>
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-sm font-weight-bold">DATE</span>
-                        <!-- <span class="text-secondary text-sm font-weight-bold">{{baby.created_at}}</span> -->
-                      </td>
-                      <td class="align-middle text-center">
                         <router-link :to="{name: 'edit-baby', params:{id:baby.id}}" class="btn btn-sm btn-primary">Edit</router-link>
                         <a @click="deleteBaby(baby.id)" class="btn btn-sm btn-danger"><font color="#ffffff">Delete</font></a>
                       </td>
@@ -73,11 +68,6 @@
 <script type="text/javascript">
 
   export default {
-    created(){
-      if(!User.loggedIn()){
-        this.$router.push({name:'/'})
-      }
-    },
     data(){
       return {
         babies:[],
@@ -133,7 +123,10 @@
     },
     },
     created(){
-      this.allBaby()
+      if(!User.loggedIn()){
+        this.$router.push({name:'/'})
+      };
+      this.allBaby();
     }
   }
 

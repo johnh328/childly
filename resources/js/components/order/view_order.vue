@@ -137,9 +137,7 @@
 
   import moment from 'moment';
   
-  export default {
- 
-
+  export default {    
     data(){
     return {
       errors:{},
@@ -150,6 +148,9 @@
     }
   },
   created(){
+    if(!User.loggedIn()){
+        this.$router.push({name:'/'})
+    }
   	let id = this.$route.params.id
   	axios.get('/api/order/by-id/'+id)
   	.then(({data}) => {

@@ -38,11 +38,6 @@
 <script type="text/javascript">
 
   export default {
-    created(){
-      if(!User.loggedIn()){
-        this.$router.push({name:'/'})
-      }
-    },
     data(){
       return {
         form:{
@@ -54,6 +49,9 @@
       }
     },
     created(){
+      if(!User.loggedIn()){
+        this.$router.push({name:'/'})
+      }
       let id = this.$route.params.id
       this.form.attribute_id = this.$route.params.id;
       axios.get('/api/attribute/'+id)

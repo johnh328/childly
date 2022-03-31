@@ -48,6 +48,13 @@
                       </div>
                       <small class="text-danger" v-if="errors.phone">{{errors.phone[0]}}</small>
 					  </div>
+            <div class="col-md-6">
+					    <label for="formFileMultiple" class="form-label mt-3">Choose Employee photo</label>
+                <div class="input-group input-group-outline">
+                  <input class="form-control" required type="file" id="formFile" @change="onFileSelected">
+                </div>
+              <small class="text-danger" v-if="errors.photo">{{errors.photo[0]}}</small>
+					  </div>
 					</div>
           <div class="form-group mt-5">
               <button type="submit" class="btn btn-primary btn-block">Update Supplier</button>
@@ -67,8 +74,6 @@
 <script type="text/javascript">
   
   export default {
- 
-
     data(){
     return {
       form:{
@@ -85,6 +90,9 @@
     }
   },
   created(){
+    if(!User.loggedIn()){
+        this.$router.push({name:'/'})
+    }
   	let id = this.$route.params.id
   	axios.get('/api/supplier/'+id)
   	.then(({data}) => (this.form = data))

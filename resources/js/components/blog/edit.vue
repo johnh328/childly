@@ -76,6 +76,9 @@
   },
 
     created(){
+    if(!User.loggedIn()){
+        this.$router.push({name:'/'})
+    }
   	let id = this.$route.params.id
   	axios.get('/api/blog/'+id)
   	.then(({data}) => {

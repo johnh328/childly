@@ -67,7 +67,6 @@
 <script type="text/javascript">
   
   export default {
- 
     data(){
       return{
         orders:[],
@@ -83,15 +82,13 @@
     },
  
   methods:{
-    // allOrder(){
-    //   axios.get('/api/order/')
-    //   .then(({data}) => (this.orders = data))
-    //   .catch()
-    // },
-   
+
 
   },
   created(){
+    if(!User.loggedIn()){
+        this.$router.push({name:'/'})
+    }
     axios.get('/api/order/')
     .then(({data}) => (this.orders = data))
     .catch(error => console.log("ORDER ERROR:",error))

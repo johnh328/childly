@@ -67,7 +67,6 @@
 <script type="text/javascript">
   
   export default {
- 
     data(){
       return{
         orders:[],
@@ -87,6 +86,9 @@
 
   },
   created(){
+    if(!User.loggedIn()){
+        this.$router.push({name:'/'})
+    }
     axios.get('/api/refund/order/')
     .then(({data}) => (this.orders = data))
     .catch(error => console.log("ORDER ERROR:",error))

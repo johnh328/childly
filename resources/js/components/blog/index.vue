@@ -73,7 +73,6 @@
 <script type="text/javascript">
   
   export default {
- 
     data(){
       return{
         blogs:[],
@@ -126,6 +125,9 @@
 
   },
   created(){
+    if(!User.loggedIn()){
+        this.$router.push({name:'/'})
+    }
     this.allBlog();
   } 
   

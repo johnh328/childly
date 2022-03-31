@@ -36,11 +36,6 @@
 <script type="text/javascript">
 
   export default {
-    created(){
-      if(!User.loggedIn()){
-        this.$router.push({name:'/'})
-      }
-    },
     data(){
       return {
         form:{
@@ -50,6 +45,9 @@
       }
     },
     created(){
+        if(!User.loggedIn()){
+        this.$router.push({name:'/'})
+        }
         let id = this.$route.params.id
         axios.get('/api/brand/'+id)
         .then(({data}) => (this.form = data))

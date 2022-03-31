@@ -21,6 +21,7 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
+                      <th class="text-uppercase text-secondary text-sm font-weight-bolder">Image</th>
                       <th class="text-uppercase text-secondary text-sm font-weight-bolder">Name</th>
                       <th class="text-uppercase text-secondary text-sm font-weight-bolder ps-2">Email</th>
                       <th class="text-uppercase text-secondary text-sm font-weight-bolder ps-2">Phone</th>
@@ -32,11 +33,15 @@
                   </thead>
                   <tbody>
                     <tr v-for="employee in filterSearch" :key="employee.id">
+                      <td class="align-middle text-center">
+                        <div class="d-flex px-2 py-1">
+                          <div class="d-flex flex-column justify-content-center">
+                            <img :src="employee.photo" id="em_photo">
+                          </div>
+                        </div>
+                      </td>
                       <td>
                         <div class="d-flex px-2 py-1">
-                          <!-- <div>
-                            <img src="../../../../assets/img/placeholder.png" id="em_photo">
-                          </div> -->
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-md">{{employee.name}}</h6>
                           </div>
@@ -127,6 +132,9 @@
 
   },
   created(){
+    if(!User.loggedIn()){
+        this.$router.push({name:'/'})
+    }
     this.allEmployee();
   } 
   

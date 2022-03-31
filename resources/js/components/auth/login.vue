@@ -29,7 +29,8 @@
                   </div>
                   <p class="mt-4 text-sm text-center">
                     Don't have an account?
-                    <a href="../pages/sign-up.html" class="text-primary text-gradient font-weight-bold">Sign up</a>
+                    <!-- <a href="../pages/sign-up.html" class="text-primary text-gradient font-weight-bold">Sign up</a> -->
+                    <router-link to="/register" class="text-primary text-gradient font-weight-bold">Sign up</router-link>
                   </p>
                 </form>
               </div>
@@ -52,7 +53,7 @@
       return {
         form:{
           email:'admin@gmail.com',
-          password:'admin'
+          password:'admin123'
           // email:null,
           // password:null
         },

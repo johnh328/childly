@@ -34,16 +34,17 @@
                     <tr v-for="supplier in filterSearch" :key="supplier.id">
                       <td>
                         <div class="d-flex px-2 py-1">
-                          <!-- <div>
-                            <img src="../../../../assets/img/placeholder.png" id="em_photo">
-                          </div> -->
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-md">{{supplier.name}}</h6>
                           </div>
                         </div>
                       </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">Photo</p>
+                      <td class="align-middle text-center">
+                        <div class="d-flex px-2 py-1">
+                          <div class="d-flex flex-column justify-content-center">
+                            <img :src="supplier.photo" id="em_photo">
+                          </div>
+                        </div>
                       </td>
                       <td>
                         <p class="text-sm font-weight-bold mb-0">{{supplier.phone}}</p>
@@ -74,7 +75,6 @@
 <script type="text/javascript">
   
   export default {
- 
     data(){
       return{
         suppliers:[],
@@ -127,6 +127,9 @@
 
   },
   created(){
+    if(!User.loggedIn()){
+        this.$router.push({name:'/'})
+    }
     this.allSupplier();
   } 
   

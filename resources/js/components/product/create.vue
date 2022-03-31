@@ -217,8 +217,6 @@
 <script type="text/javascript">
   
   export default {
- 
-
     data(){
     return {
       form:{
@@ -312,6 +310,9 @@
   },
 
   created(){
+    if(!User.loggedIn()){
+        this.$router.push({name:'/'})
+    }
     axios.get('/api/category/')
     .then(({data}) => (this.categories = data))
     .catch(error => console.log("CATEGORY ERROR:",error))

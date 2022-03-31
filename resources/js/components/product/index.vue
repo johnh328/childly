@@ -43,9 +43,6 @@
                       </td>
                       <td>
                         <div class="d-flex px-2 py-1">
-                          <!-- <div>
-                            <img src="../../../../assets/img/placeholder.png" id="em_photo">
-                          </div> -->
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-md truncate">{{product.product_name}}</h6>
                           </div>
@@ -86,7 +83,6 @@
 <script type="text/javascript">
   
   export default {
- 
     data(){
       return{
         products:[],
@@ -139,6 +135,9 @@
 
   },
   created(){
+    if(!User.loggedIn()){
+        this.$router.push({name:'/'})
+    }
     this.allProduct();
   } 
   

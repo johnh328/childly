@@ -4,8 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+  <link rel="icon" type="image/png" href="./assets/img/child.png">
   <title>
     Childly
   </title>
@@ -19,11 +18,9 @@
 
 <body class="g-sidenav-show  bg-gray-200">
   <div id="app">
-  <aside  id="sidenav-main" :class="[$route.path !== '/' ? 'sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark' : '']" style="display: none;" v-show="$route.path === '/' ? false : true">
-    <div class="sidenav-header" style=" height: 2.5rem;">
-        <h6 class="align-middle text-center font-weight-bold text-white mt-3">Childly</h6>
-      </a>
-    </div>
+  <aside  id="sidenav-main" :class="[$route.path !== '/' && $route.path !== '/register' ?
+   'sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark' : '']"
+    style="display: none;" v-show="$route.path === '/' && '/register' ? false : true">
     <hr class="horizontal light mt-0 mb-2">
     <div class="collapse navbar-collapse  w-auto  h-auto" id="sidenav-collapse-main">
       <ul class="navbar-nav">

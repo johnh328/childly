@@ -52,11 +52,6 @@
 <script type="text/javascript">
 
   export default {
-    created(){
-      if(!User.loggedIn()){
-        this.$router.push({name:'/'})
-      }
-    },
     data(){
       return {
         attributeValues:[],
@@ -112,6 +107,9 @@
     },
     },
     created(){
+      if(!User.loggedIn()){
+        this.$router.push({name:'/'})
+      }
       this.allAttributeValues()
     }
   }

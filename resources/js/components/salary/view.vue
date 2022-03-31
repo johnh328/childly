@@ -69,7 +69,6 @@
 <script type="text/javascript">
   
   export default {
- 
     data(){
       return{
         salaries:[],
@@ -94,6 +93,9 @@
     
   },
   created(){
+    if(!User.loggedIn()){
+        this.$router.push({name:'/'})
+    }
     this.viewSalary();
   } 
   

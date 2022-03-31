@@ -105,8 +105,11 @@
        })
        .catch(error =>this.errors = error.response.data.errors)
      },
-  },
-       created(){
+    },
+    created(){
+      if(!User.loggedIn()){
+        this.$router.push({name:'/'})
+      }
       axios.get('/api/blog-category')
       .then(({data}) => (this.blog_categories = data))
       .catch(error => console.log("BLOG CATEGORY ERROR:",error))

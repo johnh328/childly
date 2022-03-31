@@ -47,13 +47,16 @@ class AuthController extends Controller
             'password' => 'required|min:6',
         ]);
 
-        $data = array();
-        $data['name'] = $request->name;
-        $data['email'] = $request->email;
-        $data['password'] = Hash::make($request->password);
-        DB::table('users')->insert($data);
+        $is_user =  DB::table('users')->get()->first();
 
-        return $this->login($request);
+        if (!$is_user) {
+            $data = array();
+            $data['name'] = $request->name;
+            $data['email'] = $request->email;
+            $data['password'] = Hash::make($request->password);
+            DB::table('users')->insert($data);
+            return $this->login($request);
+        }
     }
 
     /**

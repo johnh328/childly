@@ -63,6 +63,12 @@
                       </div>
                       <small class="text-danger" v-if="errors.joining_date">{{errors.joining_date[0]}}</small>
 					  </div>
+            <div class="col-md-6 mt-3">
+					    <label for="formFileMultiple" class="form-label">Choose Employee photo</label>
+                <div class="input-group input-group-outline">
+                  <input class="form-control" required type="file" id="formFile" @change="onFileSelected">
+                </div>
+					  </div>
 					</div>
           <div class="form-group mt-5">
               <button type="submit" class="btn btn-primary btn-block">Update Employee</button>
@@ -98,6 +104,9 @@
     }
   },
   created(){
+    if(!User.loggedIn()){
+        this.$router.push({name:'/'})
+    }
   	let id = this.$route.params.id
   	axios.get('/api/employee/'+id)
   	.then(({data}) => (this.form = data))
