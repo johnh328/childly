@@ -70,7 +70,7 @@ class CartController extends Controller
     public function show($id)
     {
         $cart = DB::table('carts')
-            ->join('customers', 'carts.customer_id', 'customers.id')
+            ->where('customer_id', $id)
             ->join('products', 'carts.product_id', 'products.id')
             ->select(
                 'products.product_name',

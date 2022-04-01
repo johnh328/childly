@@ -65,7 +65,7 @@ class WishlistController extends Controller
     public function show($id)
     {
         $cart = DB::table('wishlists')
-            ->join('customers', 'wishlists.customer_id', 'customers.id')
+            ->where('customer_id', $id)
             ->join('products', 'wishlists.product_id', 'products.id')
             ->select(
                 'products.product_name',
